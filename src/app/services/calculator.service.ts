@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { WeatherForecast } from '../models/weather-forecast.model';
+import { Balances } from '../models/balances.model';
+import { AllAccounts } from '../models/all-accounts.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class CalculatorService {
   constructor(private _http: HttpClient) { }
 
 
-  getWeatherForecast() {
-    return this._http.get<Array<WeatherForecast>>(`${this.baseUrl}/weatherforecast`);
+  calculateNetworth(allAccounts: AllAccounts) {
+    return this._http.post<Balances>(`${this.baseUrl}/calculate-net-worth`, allAccounts);
   }
 }
