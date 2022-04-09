@@ -1,0 +1,64 @@
+<div class="heading">Assets</div>
+<table class="table">
+    <thead>
+        <th>Cash And Investments</th>
+        <th></th>
+    </thead>
+    <tr *ngFor="let cai of allAccounts.cashAndInvestments">
+        <td>{{ cai.name }}</td>
+        <td class="value-cell">
+            <span>{{ currencySymbol }}</span>
+            <input [value]="cai.balance | number:'1.2-2'" />
+        </td>
+    </tr>
+
+    <thead>
+        <th>Long Term Assets</th>
+        <th></th>
+    </thead>
+    <tr *ngFor="let cai of allAccounts.longTermAssets">
+        <td>{{ cai.name }}</td>
+        <td class="value-cell">
+            <span>{{ currencySymbol }}</span>
+            <input [value]="cai.balance | number:'1.2-2'" />
+        </td>
+    </tr>
+    <thead>
+        <th>Total Assets</th>
+        <th>{{ totalAssets }}</th>
+    </thead>
+</table>
+
+<br />
+
+<div class="heading">Liabilities</div>
+<table class="table">
+    <thead>
+        <th>Short Term Liabilities</th>
+        <th></th>
+    </thead>
+    <tr *ngFor="let cai of allAccounts.shortTermLiabilities">
+        <td>{{ cai.name }}</td>
+        <td class="value-cell">
+            <span>{{ currencySymbol }}</span>
+            <input [value]="cai.balance | number:'1.2-2'" />
+        </td>
+    </tr>
+
+    <thead>
+        <th>Long Term Debt</th>
+        <th></th>
+    </thead>
+    <tr nwc-balance-row *ngFor="let cai of allAccounts.longTermDebt">
+        <td>{{ cai.name }}</td>
+        <td class="value-cell">
+            <span>{{ currencySymbol }}</span>
+            <input [value]="cai.balance | number:'1.2-2'" />
+        </td>
+    </tr>
+
+    <thead>
+        <th>Total Liabilities</th>
+        <th>{{ totalLiabilities }}</th>
+    </thead>
+</table>
