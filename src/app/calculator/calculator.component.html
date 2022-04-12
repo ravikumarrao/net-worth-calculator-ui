@@ -1,6 +1,7 @@
-<div *ngIf="groupedAccounts">
+<div class="calculator" *ngIf="groupedAccounts">
 
-    <div>
+    <div class="currency-selector-container">
+        <span>Select Currency:</span>
         <select [(ngModel)]="activeCurrency" (ngModelChange)="onCurrencyChange($event)">
             <option *ngFor="let curr of currencies" [ngValue]="curr">
                 {{curr.isoCode}}
@@ -29,7 +30,9 @@
             <td></td>
         </tr>
         <tr *ngFor="let a of groupedAccounts.CashAndInvestments">
-            <td>{{ a.name }}</td>
+            <td>
+                <span class="account-name">{{ a.name }}</span>
+            </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
                 <input [ngModel]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
@@ -41,7 +44,9 @@
             <td></td>
         </tr>
         <tr *ngFor="let a of groupedAccounts.LongTermAssets">
-            <td>{{ a.name }}</td>
+            <td>
+                <span class="account-name">{{ a.name }}</span>
+            </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
                 <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
@@ -65,7 +70,9 @@
             <td></td>
         </tr>
         <tr *ngFor="let a of groupedAccounts.ShortTermLiabilities">
-            <td>{{ a.name }}</td>
+            <td>
+                <span class="account-name">{{ a.name }}</span>
+            </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
                 <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
@@ -77,7 +84,9 @@
             <td></td>
         </tr>
         <tr nwc-balance-row *ngFor="let a of groupedAccounts.LongTermDebt">
-            <td>{{ a.name }}</td>
+            <td>
+                <span class="account-name">{{ a.name }}</span>
+            </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
                 <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />

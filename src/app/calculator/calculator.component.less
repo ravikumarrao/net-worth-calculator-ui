@@ -1,44 +1,78 @@
-.heading {
-    font-size: x-large;
-}
+@import (reference) "../../styles.less";
 
-.table {
-    border: 1px solid black;
-    border-spacing: 0px;
-    width: 500px;
+.calculator {
+    width: 550px;
+    color: @nwc-text-color-default;
 
-    .sub-header {
-        td {
-            border-width: 2px 0px 2px 0px;
-            border-color: black;
-            border-style: solid;
-            font-weight: bold;
-        }
-
-        .value-cell {
-            border-width: 2px 1px 2px 1px;
-
-            input {
-                font-weight: bold;
-            }
+    .currency-selector-container {
+        float: right;
+        margin-bottom: 10px;
+        font-size: small;
+        font-weight: bold;
+        select {
+            margin-left: 3px;
         }
     }
 
-    .value-cell {
-        width: 150px;
-        border-width: 0px 0px 1px 1px;
-        border-color: black;
+    .heading {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 3px;
+        margin-left: 5px;
+    }
+    
+    .table {
+        border-width: 1px;
         border-style: solid;
+        border-color: @nwc-border-color;
+        border-spacing: 0px;
+        width: 100%;
 
-        .currency-symbol {
-            width: 20px;
-            text-align: left;
+        td {
+            height: 28px;
+            vertical-align: bottom;
         }
-        input {
-            border: 0px;
-            text-align: right;
-            width: calc(100% - 20px);
-            float: right;
+    
+        .sub-header {
+            td {
+                border-width: 2px 0px 2px 0px;
+                border-color: @nwc-border-color;
+                border-style: solid;
+                font-weight: bold;
+            }
+    
+            .value-cell {
+                border-width: 2px 1px 2px 1px;
+    
+                input {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .account-name {
+            margin-left: 5px;
+        }
+    
+        .value-cell {
+            width: 180px;
+            border-width: 0px 0px 1px 1px;
+            border-color: @nwc-border-color;
+            border-style: solid;
+    
+            .currency-symbol {
+                width: 20px;
+                text-align: left;
+                margin-left: 4px;
+            }
+
+            input {
+                border: 0px;
+                text-align: right;
+                width: calc(100% - 25px);
+                float: right;
+                margin-right: 3px;
+            }
         }
     }
 }
