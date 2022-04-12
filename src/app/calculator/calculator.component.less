@@ -1,7 +1,7 @@
 @import (reference) "../../styles.less";
 
 .calculator {
-    width: 550px;
+    width: 650px;
     color: @nwc-text-color-default;
 
     .currency-selector-container {
@@ -15,10 +15,11 @@
     }
 
     .heading {
-        font-size: 20px;
+        font-size: 17px;
         font-weight: bold;
         margin-bottom: 3px;
         margin-left: 5px;
+        margin-top: 30px;
     }
     
     .table {
@@ -40,6 +41,10 @@
                 border-style: solid;
                 font-weight: bold;
             }
+
+            td:first-child {
+                padding-left: 5px;
+            }
     
             .value-cell {
                 border-width: 2px 1px 2px 1px;
@@ -55,7 +60,7 @@
         }
     
         .value-cell {
-            width: 180px;
+            width: 150px;
             border-width: 0px 0px 1px 1px;
             border-color: @nwc-border-color;
             border-style: solid;
@@ -74,5 +79,13 @@
                 margin-right: 3px;
             }
         }
+    }
+
+    .color-red {
+        color: red;
+    }
+
+    .color-green {
+        color: #1dac1d;
     }
 }

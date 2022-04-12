@@ -9,19 +9,16 @@
         </select>
     </div>
 
-    <br />
-
     <table class="table">
         <tr class="sub-header">
             <td>Net Worth</td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input [value]="balances?.netWorth | number:'1.2-2'" readonly />
+                <input *ngIf="balances" [value]="balances.netWorth | number:'1.2-2'" readonly
+                    [class.color-red]="balances.netWorth < 0" [class.color-green]="balances.netWorth >= 0" />
             </td>
         </tr>
     </table>
-
-    <br />
 
     <div class="heading">Assets</div>
     <table class="table">
@@ -35,7 +32,8 @@
             </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input [ngModel]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
+                <input [ngModel]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)"
+                    (keypress)="numberOnly($event)" />
             </td>
         </tr>
 
@@ -49,7 +47,8 @@
             </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
+                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)"
+                    (keypress)="numberOnly($event)" />
             </td>
         </tr>
         <tr class="sub-header">
@@ -60,8 +59,6 @@
             </td>
         </tr>
     </table>
-
-    <br />
 
     <div class="heading">Liabilities</div>
     <table class="table">
@@ -75,7 +72,8 @@
             </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
+                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)"
+                    (keypress)="numberOnly($event)" />
             </td>
         </tr>
 
@@ -89,7 +87,8 @@
             </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
+                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)"
+                    (keypress)="numberOnly($event)" />
             </td>
         </tr>
 
