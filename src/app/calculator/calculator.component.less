@@ -7,8 +7,21 @@
     border-spacing: 0px;
     width: 500px;
 
-    th {
-        border: 1px solid black;
+    .sub-header {
+        td {
+            border-width: 2px 0px 2px 0px;
+            border-color: black;
+            border-style: solid;
+            font-weight: bold;
+        }
+
+        .value-cell {
+            border-width: 2px 1px 2px 1px;
+
+            input {
+                font-weight: bold;
+            }
+        }
     }
 
     .value-cell {
@@ -17,10 +30,15 @@
         border-color: black;
         border-style: solid;
 
+        .currency-symbol {
+            width: 20px;
+            text-align: left;
+        }
         input {
             border: 0px;
             text-align: right;
-            width: calc(100% - 1em);
+            width: calc(100% - 20px);
+            float: right;
         }
     }
 }

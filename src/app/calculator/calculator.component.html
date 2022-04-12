@@ -1,80 +1,96 @@
-<table class="table">
-    <thead class="value-cell">
-        <th>Net Worth</th>
-        <th class="value-cell">
-            <span>{{ currencySymbol }}</span>
-            <input [value]="balances?.netWorth | number:'1.2-2'" readonly />
-        </th>
-    </thead>
-</table>
+<div *ngIf="groupedAccounts">
 
-<div class="heading">Assets</div>
-<table class="table">
-    <thead>
-        <th>Cash And Investments</th>
-        <th></th>
-    </thead>
-    <tr *ngFor="let a of allAccounts?.cashAndInvestments">
-        <td>{{ a.name }}</td>
-        <td class="value-cell">
-            <span>{{ currencySymbol }}</span>
-            <input [ngModel]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
-        </td>
-    </tr>
+    <div>
+        <select [(ngModel)]="activeCurrency" (ngModelChange)="onCurrencyChange($event)">
+            <option *ngFor="let curr of currencies" [ngValue]="curr">
+                {{curr.isoCode}}
+            </option>
+        </select>
+    </div>
 
-    <thead>
-        <th>Long Term Assets</th>
-        <th></th>
-    </thead>
-    <tr *ngFor="let a of allAccounts?.longTermAssets">
-        <td>{{ a.name }}</td>
-        <td class="value-cell">
-            <span>{{ currencySymbol }}</span>
-            <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
-        </td>
-    </tr>
-    <thead>
-        <th>Total Assets</th>
-        <th class="value-cell">
-            <span>{{ currencySymbol }}</span>
-            <input [value]="balances?.totalAssets | number:'1.2-2'" readonly />
-        </th>
-    </thead>
-</table>
+    <br />
 
-<br />
+    <table class="table">
+        <tr class="sub-header">
+            <td>Net Worth</td>
+            <td class="value-cell">
+                <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
+                <input [value]="balances?.netWorth | number:'1.2-2'" readonly />
+            </td>
+        </tr>
+    </table>
 
-<div class="heading">Liabilities</div>
-<table class="table">
-    <thead>
-        <th>Short Term Liabilities</th>
-        <th></th>
-    </thead>
-    <tr *ngFor="let a of allAccounts?.shortTermLiabilities">
-        <td>{{ a.name }}</td>
-        <td class="value-cell">
-            <span>{{ currencySymbol }}</span>
-            <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
-        </td>
-    </tr>
+    <br />
 
-    <thead>
-        <th>Long Term Debt</th>
-        <th></th>
-    </thead>
-    <tr nwc-balance-row *ngFor="let a of allAccounts?.longTermDebt">
-        <td>{{ a.name }}</td>
-        <td class="value-cell">
-            <span>{{ currencySymbol }}</span>
-            <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
-        </td>
-    </tr>
+    <div class="heading">Assets</div>
+    <table class="table">
+        <tr class="sub-header">
+            <td>Cash And Investments</td>
+            <td></td>
+        </tr>
+        <tr *ngFor="let a of groupedAccounts.CashAndInvestments">
+            <td>{{ a.name }}</td>
+            <td class="value-cell">
+                <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
+                <input [ngModel]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
+            </td>
+        </tr>
 
-    <thead>
-        <th>Total Liabilities</th>
-        <th class="value-cell">
-            <span>{{ currencySymbol }}</span>
-            <input [value]="balances?.totalLiabilities | number:'1.2-2'" readonly />
-        </th>
-    </thead>
-</table>
+        <tr class="sub-header">
+            <td>Long Term Assets</td>
+            <td></td>
+        </tr>
+        <tr *ngFor="let a of groupedAccounts.LongTermAssets">
+            <td>{{ a.name }}</td>
+            <td class="value-cell">
+                <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
+                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
+            </td>
+        </tr>
+        <tr class="sub-header">
+            <td>Total Assets</td>
+            <td class="value-cell">
+                <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
+                <input [value]="balances?.totalAssets | number:'1.2-2'" readonly />
+            </td>
+        </tr>
+    </table>
+
+    <br />
+
+    <div class="heading">Liabilities</div>
+    <table class="table">
+        <tr class="sub-header">
+            <td>Short Term Liabilities</td>
+            <td></td>
+        </tr>
+        <tr *ngFor="let a of groupedAccounts.ShortTermLiabilities">
+            <td>{{ a.name }}</td>
+            <td class="value-cell">
+                <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
+                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
+            </td>
+        </tr>
+
+        <tr class="sub-header">
+            <td>Long Term Debt</td>
+            <td></td>
+        </tr>
+        <tr nwc-balance-row *ngFor="let a of groupedAccounts.LongTermDebt">
+            <td>{{ a.name }}</td>
+            <td class="value-cell">
+                <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
+                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)" />
+            </td>
+        </tr>
+
+        <tr class="sub-header">
+            <td>Total Liabilities</td>
+            <td class="value-cell">
+                <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
+                <input [value]="balances?.totalLiabilities | number:'1.2-2'" readonly />
+            </td>
+        </tr>
+    </table>
+
+</div>

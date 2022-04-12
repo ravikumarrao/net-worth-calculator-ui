@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { WeatherForecast } from '../models/weather-forecast.model';
 import { Balances } from '../models/balances.model';
-import { AllAccounts } from '../models/all-accounts.model';
+import { UrlService } from './url.service';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalculatorService {
-  private baseUrl = "https://localhost:5001/calculator"
+  private baseUrl: string;
   
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private _urlService: UrlService) { 
+    this.baseUrl = `${this._urlService.getEnvironmentUrl()}`;
+  }
 
-
-  calculateNetworth(allAccounts: AllAccounts) {
-    return this._http.post<Balances>(`${this.baseUrl}/calculate-net-worth`, allAccounts);
+  calculateNetworth(user: User) {
+    return this._http.get<Balances>(`${this.baseUrl}/users/${user.id}/net-worth`);
   }
 }
