@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { NgxSnakeToCamelInterceptor } from './utils/snake-to-camel-case-interceptor';
+import { LocaleNumberPipe } from './utils/locale-number.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    LocaleNumberPipe
   ],
   imports: [
     BrowserModule,

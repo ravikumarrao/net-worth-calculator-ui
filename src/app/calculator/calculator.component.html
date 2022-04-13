@@ -14,7 +14,7 @@
             <td>Net Worth</td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input *ngIf="balances" [value]="balances.netWorth | number:'1.2-2'" readonly
+                <input *ngIf="balances" [value]="balances.netWorth | localeNumber:'1.2-2'" readonly
                     [class.color-red]="balances.netWorth < 0" [class.color-green]="balances.netWorth >= 0" />
             </td>
         </tr>
@@ -32,7 +32,7 @@
             </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input [ngModel]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)"
+                <input [ngModel]="a.balance | localeNumber:'1.2-2'" (change)="onBalanceChange(a, $event)"
                     (keypress)="numberOnly($event)" />
             </td>
         </tr>
@@ -47,7 +47,7 @@
             </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)"
+                <input [ngModel]="a.balance | localeNumber:'1.2-2'" (change)="onBalanceChange(a, $event)"
                     (keypress)="numberOnly($event)" />
             </td>
         </tr>
@@ -55,7 +55,7 @@
             <td>Total Assets</td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input [value]="balances?.totalAssets | number:'1.2-2'" readonly />
+                <input [ngModel]="balances?.totalAssets | localeNumber:'1.2-2'" readonly />
             </td>
         </tr>
     </table>
@@ -72,7 +72,7 @@
             </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)"
+                <input [ngModel]="a.balance | localeNumber:'1.2-2'" (change)="onBalanceChange(a, $event)"
                     (keypress)="numberOnly($event)" />
             </td>
         </tr>
@@ -87,7 +87,7 @@
             </td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input [value]="a.balance | number:'1.2-2'" (change)="onBalanceChange(a, $event)"
+                <input [ngModel]="a.balance | localeNumber:'1.2-2'" (change)="onBalanceChange(a, $event)"
                     (keypress)="numberOnly($event)" />
             </td>
         </tr>
@@ -96,7 +96,7 @@
             <td>Total Liabilities</td>
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
-                <input [value]="balances?.totalLiabilities | number:'1.2-2'" readonly />
+                <input [ngModel]="balances?.totalLiabilities | localeNumber:'1.2-2'" readonly />
             </td>
         </tr>
     </table>

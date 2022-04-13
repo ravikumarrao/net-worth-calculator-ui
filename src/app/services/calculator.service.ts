@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Balances } from '../models/balances.model';
 import { UrlService } from './url.service';
 import { User } from '../models/user.model';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,11 @@ import { User } from '../models/user.model';
 export class CalculatorService {
   private baseUrl: string;
   
-  constructor(private _http: HttpClient, private _urlService: UrlService) { 
+  constructor(private _http: HttpClient, private _urlService: UrlService, private _usersService: UsersService) { 
     this.baseUrl = `${this._urlService.getEnvironmentUrl()}`;
   }
 
-  calculateNetworth(user: User) {
-    return this._http.get<Balances>(`${this.baseUrl}/users/${user.id}/net-worth`);
+  getNetWorth() {
+    return this._http.get<Balances>(`${this.baseUrl}/users/${this._usersService.activeUser.id}/net-worth`);
   }
 }
