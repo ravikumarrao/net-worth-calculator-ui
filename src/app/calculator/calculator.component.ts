@@ -68,8 +68,7 @@ export class CalculatorComponent implements OnInit {
 
   onCurrencyChange(newCurrency: Currency) {
     this._usersService.activeUser.currency = newCurrency.isoCode;
-    this._usersService.updateUser(this._usersService.activeUser)
-      .subscribe(_ => this.refreshAccountsAndBalances());
+    this.refreshAccountsAndBalances();
   }
 
   calculateNetWorth() {

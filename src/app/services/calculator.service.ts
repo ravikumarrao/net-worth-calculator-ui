@@ -16,6 +16,6 @@ export class CalculatorService {
   }
 
   getNetWorth() {
-    return this._http.get<Balances>(`${this.baseUrl}/users/${this._usersService.activeUser.id}/net-worth`);
+    return this._http.get<Balances>(`${this.baseUrl}/users/${this._usersService.activeUser.id}/net-worth?currency=${this._usersService.activeUser.currency}`);
   }
 }

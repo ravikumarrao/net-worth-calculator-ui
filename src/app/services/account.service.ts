@@ -25,6 +25,6 @@ export class AccountService {
   }
 
   private getAccountsUrl(userId: number) {
-    return `${this._urlService.getEnvironmentUrl()}/users/${userId}/accounts`;
+    return `${this._urlService.getEnvironmentUrl()}/users/${userId}/accounts?currency=${this._usersService.activeUser.currency}`;
   }
 }
