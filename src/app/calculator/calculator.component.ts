@@ -84,4 +84,8 @@ export class CalculatorComponent implements OnInit {
     }
     return true;
   }
+
+  isGreen() {
+    return this.balances?.netWorth > 0 && !(this.activeCurrency?.locale == "zh-CN");
+  }
 }

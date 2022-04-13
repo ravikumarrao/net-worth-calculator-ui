@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Currency } from '../models/currency.model';
 import { UrlService } from './url.service';
+import { map } from "rxjs";
 
 import { registerLocaleData } from '@angular/common';
 
@@ -31,7 +32,8 @@ export class CurrenciesService {
   }
 
   getCurrencies() {
-    return this._http.get<Array<Currency>>(this._baseUrl);
+    return this._http.get<Array<Currency>>(this._baseUrl)
+      .pipe(map(c => c.sort((a, b) => a.isoCode.localeCompare(b.isoCode))));
   }
 
   private registerLocale(locale: string) {

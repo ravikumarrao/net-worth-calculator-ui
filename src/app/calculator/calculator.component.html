@@ -15,7 +15,7 @@
             <td class="value-cell">
                 <span class="currency-symbol">{{ activeCurrency?.symbol }}</span>
                 <input *ngIf="balances" [value]="balances.netWorth | localeNumber:'1.2-2'" readonly
-                    [class.color-red]="balances.netWorth < 0" [class.color-green]="balances.netWorth >= 0" />
+                    [class.color-red]="!isGreen()" [class.color-green]="isGreen()" />
             </td>
         </tr>
     </table>
